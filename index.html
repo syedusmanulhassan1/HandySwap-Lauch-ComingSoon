@@ -46,56 +46,60 @@
             gap: 8px;
         }
 
-        /* --- 3. BACKGROUND HERO SLIDER --- */
+        /* --- 3. HERO SLIDER BLOCK --- */
         .hero-slider-container {
             position: relative;
             width: 100%;
-            height: calc(100vh - 160px); /* Fills screen minus header */
+            height: calc(100vh - 160px); /* Fill screen minus header */
             min-height: 600px;
             overflow: hidden;
-            background-color: #e6f7ff; 
+            background-color: #e6f7ff; /* The Light Blue Base */
         }
 
-        /* The Slide Images (Background Layer) */
+        /* FIXED IMAGES: Use 'contain' to keep them sharp and not scattered */
         .slide-bg {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Forces image to cover entire banner */
-            object-position: center;
+            /* 'contain' ensures the whole image is seen inside the box */
+            object-fit: contain; 
+            object-position: center bottom; /* Sits nicely at bottom/center */
             opacity: 0; /* Hidden by default */
             transition: opacity 1.5s ease-in-out; /* Smooth fade */
             z-index: 1;
+            padding: 20px; /* Breathing room */
         }
 
         .slide-bg.active { opacity: 1; }
 
-        /* Dark Overlay (Makes text readable) */
+        /* Light Overlay (Optional, makes text readable if image overlaps) */
         .overlay-dim {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.1); /* Very light dim */
+            background: rgba(230, 247, 255, 0.4); /* Slight blue tint over images */
             z-index: 2;
         }
 
-        /* --- 4. CENTER CONTENT (White Box) --- */
+        /* --- 4. CENTER TEXT BOX --- */
         .hero-content {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            z-index: 10; /* Above images */
+            z-index: 10; /* Always on top of images */
             text-align: center;
             width: 90%;
             max-width: 650px;
             
-            /* The White Box Style */
-            background: rgba(255, 255, 255, 0.95);
+            /* Glassy White Box */
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
             padding: 50px 40px;
             border-radius: 30px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            border: 1px solid rgba(255,255,255,0.8);
         }
 
         h1 { font-size: 3.2rem; color: #111; margin-bottom: 15px; font-weight: 900; line-height: 1.1; }
@@ -144,6 +148,7 @@
             h1 { font-size: 2.5rem; }
             .hero-content { padding: 30px 20px; width: 95%; }
             .trust-container { flex-direction: column; gap: 15px; }
+            .slide-bg { object-fit: contain; padding: 10px; } /* Ensures full image visible on phone too */
         }
     </style>
 </head>
