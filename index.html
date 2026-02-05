@@ -188,8 +188,7 @@
 
     </section>
 
-    <footer class="trust-footer">
-        <div class="trust-container">
+<footer class="trust-footer" id="footer-section">        <div class="trust-container">
             <div class="trust-item"><i class="fa-solid fa-rotate-left trust-icon"></i> 30-Day Returns</div>
             <div class="trust-item"><i class="fa-solid fa-shield-halved trust-icon"></i> 12-Month Warranty</div>
             <div class="trust-item"><i class="fa-solid fa-truck-fast trust-icon"></i> Free Shipping</div>
@@ -209,7 +208,7 @@
                 slides[currentSlide].classList.add('active');
             }
         }
-        setInterval(nextSlide, 4000);
+        setInterval(nextSlide, 10000);
 
         // --- COUNTDOWN LOGIC ---
         const currentYear = new Date().getFullYear();
