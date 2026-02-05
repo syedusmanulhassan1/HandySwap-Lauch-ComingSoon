@@ -47,12 +47,17 @@
             gap: 8px;
         }
 
-        /* --- 3. HERO SLIDER BLOCK --- */
+        /* --- 3. HERO SLIDER BLOCK (ADJUSTED SIZE) --- */
         .hero-slider-container {
             position: relative;
             width: 100%;
-            height: calc(100vh - 160px); 
-            min-height: 600px;
+            /* FIX: Adjusted height logic 
+               1. 85vh gives it good height on laptops.
+               2. max-height: 750px prevents it from getting too tall on big screens (which makes image look small).
+            */
+            height: 85vh; 
+            max-height: 750px; 
+            min-height: 550px; 
             overflow: hidden;
             background-color: #c9e9ff; /* Matches the blue banner background */
         }
@@ -68,13 +73,14 @@
             z-index: 1;
         }
 
-        /* FIXED: Use 'contain' so the phone and person are never cut off */
+        /* FIXED: Centered and Scaled slightly for impact */
         .slide-bg.contain-mode {
             object-fit: contain;
-            object-position: center center;
+            object-position: center; 
+            transform: scale(1.01); /* Tiny zoom to prevent white pixel edges */
         }
 
-        /* Use 'cover' for regular photos that need to fill the screen completely */
+        /* Use 'cover' for regular photos if you ever add them */
         .slide-bg.cover-mode {
             object-fit: cover;
             object-position: center;
@@ -148,8 +154,12 @@
             h1 { font-size: 2.5rem; }
             .hero-content { padding: 30px 20px; width: 95%; }
             .trust-container { flex-direction: column; gap: 15px; }
-            /* On mobile, we might want 'cover' to avoid image being too tiny */
-            .slide-bg.contain-mode { object-fit: cover; } 
+            
+            /* On mobile, we force cover so the image fills the background, 
+               even if it cuts off a little bit of the sides */
+            .slide-bg.contain-mode { 
+                object-fit: cover; 
+            } 
         }
     </style>
 </head>
@@ -167,8 +177,7 @@
     <section class="hero-slider-container">
         
         <img src="./hero-bg.png" class="slide-bg contain-mode active" alt="Slide 1">
-        
-        <img src="./phone.png" class="slide-bg contain-mode" alt="Slide 2">
+        <img src="./banner-bg.png" class="slide-bg contain-mode" alt="Slide 2">
 
         <div class="hero-content">
             <h1>Premium iPhone<br>Smart Prices</h1>
