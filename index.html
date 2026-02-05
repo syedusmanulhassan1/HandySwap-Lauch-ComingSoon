@@ -9,11 +9,18 @@
     <style>
         /* --- 1. GLOBAL STYLES --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        /* FIXED: Flexbox layout to push footer to the very bottom */
         body { 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
             background-color: #f4f7f6;
             color: #333;
-            overflow-x: hidden; 
+            overflow-x: hidden;
+            
+            /* These lines create the full-page layout */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; 
         }
 
         /* --- 2. HEADER --- */
@@ -27,6 +34,7 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             position: relative;
             z-index: 100;
+            flex-shrink: 0; /* Prevents header from shrinking */
         }
 
         .logo-container img { 
@@ -51,11 +59,12 @@
         .hero-slider-container {
             position: relative;
             width: 100%;
-            height: 85vh; 
-            max-height: 750px; 
-            min-height: 550px; 
+            
+            /* FIXED: 'flex: 1' makes this section fill ALL remaining space automatically */
+            flex: 1; 
+            min-height: 550px; /* Ensures it never gets too small on mobile */
             overflow: hidden;
-            background-color: #c9e9ff; /* Matches the blue banner background */
+            background-color: #c9e9ff; 
         }
 
         .slide-bg {
@@ -87,8 +96,6 @@
             text-align: center;
             width: 90%;
             max-width: 650px;
-            
-            /* FIXED: Made background transparent & removed box styling */
             background: transparent;
             padding: 20px;
         }
@@ -127,6 +134,7 @@
             font-size: 0.85rem;
             text-align: center;
             border-top: 5px solid #3b82f6; 
+            flex-shrink: 0; /* Prevents footer from squashing */
         }
         .trust-container { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; padding: 0 20px; }
         .trust-item { display: flex; align-items: center; gap: 8px; font-weight: 700; text-transform: uppercase; color: #222; }
@@ -160,7 +168,7 @@
     <section class="hero-slider-container">
         
         <img src="./hero-bg.png" class="slide-bg contain-mode active" alt="Slide 1">
-        <img src="./banner-bg.png" class="slide-bg contain-mode" alt="Slide 2">
+        <img src="./phone.png" class="slide-bg contain-mode" alt="Slide 2">
 
         <div class="hero-content">
             <h1>Premium iPhone<br>Smart Prices</h1>
