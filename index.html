@@ -48,13 +48,18 @@
         }
 
         /* --- 3. HERO SLIDER BLOCK --- */
-        .hero-slider-container {
-            position: relative;
-            width: 100%;
-            height: calc(100vh - 160px); /* Fill screen minus header */
-            min-height: 600px;
-            overflow: hidden;
-        }
+     .hero-slider-container {
+    position: relative;
+    width: 100%;
+    /* Change height to min-height */
+    min-height: calc(100vh - 90px); 
+    /* Remove overflow: hidden if you want to see everything, 
+       but keeping it is fine if we fix the positioning */
+    overflow: hidden; 
+    display: flex;         /* Add this */
+    align-items: center;   /* Add this */
+    justify-content: center; /* Add this */
+}
 
         /* FIXED: Use 'cover' to make images fill the background edge-to-edge */
         .slide-bg {
