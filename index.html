@@ -47,14 +47,10 @@
             gap: 8px;
         }
 
-        /* --- 3. HERO SLIDER BLOCK (ADJUSTED SIZE) --- */
+        /* --- 3. HERO SLIDER BLOCK --- */
         .hero-slider-container {
             position: relative;
             width: 100%;
-            /* FIX: Adjusted height logic 
-               1. 85vh gives it good height on laptops.
-               2. max-height: 750px prevents it from getting too tall on big screens (which makes image look small).
-            */
             height: 85vh; 
             max-height: 750px; 
             min-height: 550px; 
@@ -73,22 +69,15 @@
             z-index: 1;
         }
 
-        /* FIXED: Centered and Scaled slightly for impact */
         .slide-bg.contain-mode {
             object-fit: contain;
             object-position: center; 
-            transform: scale(1.01); /* Tiny zoom to prevent white pixel edges */
-        }
-
-        /* Use 'cover' for regular photos if you ever add them */
-        .slide-bg.cover-mode {
-            object-fit: cover;
-            object-position: center;
+            transform: scale(1.01); 
         }
 
         .slide-bg.active { opacity: 1; }
 
-        /* --- 4. CENTER TEXT BOX --- */
+        /* --- 4. CENTER TEXT BOX (TRANSPARENT) --- */
         .hero-content {
             position: absolute;
             top: 50%;
@@ -99,13 +88,9 @@
             width: 90%;
             max-width: 650px;
             
-            /* Glassy White Box */
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            padding: 50px 40px;
-            border-radius: 30px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-            border: 1px solid rgba(255,255,255,0.8);
+            /* FIXED: Made background transparent & removed box styling */
+            background: transparent;
+            padding: 20px;
         }
 
         h1 { font-size: 3.2rem; color: #111; margin-bottom: 15px; font-weight: 900; line-height: 1.1; }
@@ -155,8 +140,6 @@
             .hero-content { padding: 30px 20px; width: 95%; }
             .trust-container { flex-direction: column; gap: 15px; }
             
-            /* On mobile, we force cover so the image fills the background, 
-               even if it cuts off a little bit of the sides */
             .slide-bg.contain-mode { 
                 object-fit: cover; 
             } 
